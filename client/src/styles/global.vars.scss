@@ -1,0 +1,38 @@
+$accent_color: #b59f5b;
+$gray_color: #6e6e6e;
+$gray_color_active:#7d7d7d;
+$gray_color_light: #a2a2a2;
+$gray_color_lighter_href:#d7d7d7;
+$gray_color_active_href:#c9c9c9;
+$gray_color_lighter: #ebebeb;
+$gutter: 30px;
+$wsi: 25px;
+$hsi: 25px;
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("~@/assets/fonts/OpenSans-Bold.woff");
+}
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("~@/assets/fonts/OpenSans-Regular.woff");
+}
+.grid {
+  display: grid;
+}
+.content {
+  width: 100%;
+  max-width: 1200px;
+}
+@mixin br($rad) {
+  -webkit-border-radius: $rad;
+  -moz-border-radius: $rad;
+  -ms-border-radius: $rad;
+  border-radius: $rad;
+}
+@mixin no_selection{
+  user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
