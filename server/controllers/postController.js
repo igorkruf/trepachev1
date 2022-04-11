@@ -1,12 +1,12 @@
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 //Схемы документов
 const Post = require("../Mongoose/post");
 //Подключение к базе
-const mongoconnect = "mongodb://trepachev:Pervil-9@localhost:27017/trtest1";
-const mongoconnectoptions = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-};
+// const mongoconnect = "mongodb://trepachev:Pervil-9@localhost:27017/trtest1";
+// const mongoconnectoptions = {
+//   useUnifiedTopology: true,
+//   useNewUrlParser: true,
+// };
 
 module.exports = {
   //принять изменения пользователя
@@ -15,7 +15,7 @@ module.exports = {
       `Поиск поста содержащего следующую строку:${req.query.findstr}`
     );
     let findStr = req.query.findstr;
-    mongoose.connect(mongoconnect, mongoconnectoptions);
+    //mongoose.connect(mongoconnect, mongoconnectoptions);
     Post.find(function (error, listPost) {
       if (error) {
         console.log("Ошибка!!!");
@@ -39,7 +39,7 @@ module.exports = {
     console.log(`Изменения поста с id:${req.params.id} применены`);
 
     // подключение
-    mongoose.connect(mongoconnect, mongoconnectoptions);
+    //mongoose.connect(mongoconnect, mongoconnectoptions);
 
     Post.updateOne(
       { _id: req.params.id },
@@ -62,7 +62,7 @@ module.exports = {
   addPost: async (req, res) => {
     console.log("Добавление сообщения в базу");
     // подключение
-    await mongoose.connect(mongoconnect, mongoconnectoptions);
+    //await mongoose.connect(mongoconnect, mongoconnectoptions);
 
     const addPost = new Post({
       textPost: req.body.textPost,
@@ -86,9 +86,9 @@ module.exports = {
   deletePost: (req, res) => {
     const id = req.params.id;
 
-    mongoose.connect(mongoconnect, mongoconnectoptions);
+    //mongoose.connect(mongoconnect, mongoconnectoptions);
     Post.findByIdAndDelete(id, function (err, post) {
-      mongoose.disconnect();
+      //mongoose.disconnect();
 
       if (err) return console.log(err);
 
@@ -101,7 +101,7 @@ module.exports = {
   //Получение списка всех постов из базы ////////////
   listPost: (req, res) => {
     console.log("Получение списка сообщений из базы");
-    mongoose.connect(mongoconnect, mongoconnectoptions);
+    //mongoose.connect(mongoconnect, mongoconnectoptions);
     Post.find(function (error, listPost) {
       if (error) {
         console.log("Ошибка!!!");
@@ -123,10 +123,10 @@ module.exports = {
     const post_id = req.params.id;
     console.log(post_id);
     // подключение
-    mongoose.connect(mongoconnect, mongoconnectoptions);
+    // mongoose.connect(mongoconnect, mongoconnectoptions);
 
     Post.findById(post_id, function (err, post) {
-      mongoose.disconnect();
+      // mongoose.disconnect();
       if (err) {
         console.log(err);
         return res.status(222);
